@@ -13,6 +13,7 @@ interface AuthFormProps {
   onSubmit: (email: string, password: string, name?: string) => Promise<void>;
   imageurl: string;
   className: string;
+  loading?: boolean;
 }
 
 export default function AuthForm({
@@ -20,6 +21,7 @@ export default function AuthForm({
   onSubmit,
   imageurl,
   className,
+  loading,
 }: AuthFormProps) {
   const {
     name,
@@ -153,18 +155,34 @@ export default function AuthForm({
                 </label>
               </div>
             </div>
-            <Button
-              type="submit"
-              className={`w-full ${
-                formType == "login" ? "bg-green-600" : "bg-indigo-600"
-              } ${
-                formType == "login"
-                  ? "hover:bg-green-700"
-                  : "hover:bg-indigo-700"
-              } text-xl py-6`}
-            >
-              {formType == "login" ? "Login" : "Sign Up"}
-            </Button>
+            {loading == false ? (
+              <Button
+                type="submit"
+                className={`w-full ${
+                  formType == "login" ? "bg-green-600" : "bg-indigo-600"
+                } ${
+                  formType == "login"
+                    ? "hover:bg-green-700"
+                    : "hover:bg-indigo-700"
+                } text-xl py-6`}
+              >
+                {formType == "login" ? "Login" : "Sign Up"}
+              </Button>
+            ) : (
+              <Button
+                type="submit"
+                className={`w-full ${
+                  formType == "login" ? "bg-green-600" : "bg-indigo-600"
+                } ${
+                  formType == "login"
+                    ? "hover:bg-green-700"
+                    : "hover:bg-indigo-700"
+                } text-xl py-6`}
+                disabled
+              >
+                Loading...
+              </Button>
+            )}
           </form>
 
           <p className="mt-8 text-center text-base text-gray-600">
