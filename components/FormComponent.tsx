@@ -6,6 +6,7 @@ import useAuthStore from "@/store/authStore";
 import Image from "next/image";
 import { useState } from "react";
 import { svg } from "./ui/svg";
+import Link from "next/link";
 
 interface AuthFormProps {
   formType: "login" | "signup";
@@ -172,19 +173,19 @@ export default function AuthForm({
               formType == "login" ? (
                 <>
                   Don&apos;t have an account?{" "}
-                  <a
+                  <Link
                     href="/signup"
                     className={`${
                       formType == "login" ? "text-green-600" : "text-indigo-600"
                     } hover:underline`}
                   >
                     Sign Up
-                  </a>
+                  </Link>
                 </>
               ) : (
                 <>
                   Already have an account?{" "}
-                  <a
+                  <Link
                     href="/login"
                     className={`${
                       formType == "signup"
@@ -193,7 +194,7 @@ export default function AuthForm({
                     } hover:underline`}
                   >
                     Login
-                  </a>
+                  </Link>
                 </>
               )
             }
