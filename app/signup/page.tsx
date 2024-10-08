@@ -4,7 +4,10 @@ import FormComponent from "@/components/FormComponent";
 import useAuthStore from "@/store/authStore";
 import { useState } from "react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+
 export default function SignUpPage() {
+  const router = useRouter();
   const { resetAuthState } = useAuthStore();
   const [loading, setLoading] = useState(false);
 
@@ -28,6 +31,7 @@ export default function SignUpPage() {
       if (response.ok) {
         toast.success(data.message);
         resetAuthState();
+        router.push("/login");
         console.log(data);
       } else {
         toast.error(data.message);

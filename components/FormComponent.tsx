@@ -52,7 +52,7 @@ export default function AuthForm({
           alt="background"
           width={1080}
           height={1080}
-          className="h-full w-full object-cover rounded-br-3xl"
+          className="h-full w-full object-cover rounded-br-[6.5rem]"
         />
       </div>
 
